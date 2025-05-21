@@ -1,3 +1,9 @@
+function limparCampos() {
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+}
+
 function sortear() {
     // Obtém a quantidade de números a serem sorteados do input com o id 'quantidade' e converte para inteiro.
     let quantidade = parseInt(document.getElementById('quantidade').value);
@@ -17,10 +23,8 @@ function sortear() {
     if(totalNoIntervalo < quantidade){
         // Se não for possível, exibe um alerta ao usuário.
         alert(`Impossível sortear ${quantidade} números distintos entre ${de} e ${ate}. Por favor altere os parâmetros.`);
-        // Limpa os valores dos campos 'quantidade', 'de' e 'ate'.
-        document.getElementById('quantidade').value = '';
-        document.getElementById('de').value = '';
-        document.getElementById('ate').value = '';
+        // Chama a função limparCampos.
+        limparCampos();
     } else {
         // Se for possível sortear a quantidade desejada:
         // Loop para sortear a quantidade de números especificada.
@@ -74,12 +78,8 @@ function alterarStatusBotao(){
 
 // Função para reiniciar o sorteador, limpando os campos e o resultado.
 function reiniciar(){
-    // Limpa o valor do campo 'quantidade'.
-    document.getElementById('quantidade').value = '';
-    // Limpa o valor do campo 'de'.
-    document.getElementById('de').value = '';
-    // Limpa o valor do campo 'ate'.
-    document.getElementById('ate').value = '';
+    // Chama a função limparCampos.
+    limparCampos();
     // Reseta a área de resultado para a mensagem inicial.
     document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados: \xa0nenhum até agora</label>';
     // Chama a função para alterar o status do botão de reiniciar.
